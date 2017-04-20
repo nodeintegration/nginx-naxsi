@@ -93,7 +93,6 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
   && tar -zxC /usr/src -f naxsi.tar.gz \
   && rm nginx.tar.gz \
   && rm naxsi.tar.gz \
-  && rm naxsi.tar.asc \
   && cd /usr/src/nginx-$NGINX_VERSION \
   && ./configure $CONFIG --with-debug \
   && make -j$(getconf _NPROCESSORS_ONLN) \
