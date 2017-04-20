@@ -88,13 +88,12 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
   test -z "$found" && echo >&2 "error: failed to fetch GPG key $GPG_KEYS" && exit 1; \
   gpg --batch --verify nginx.tar.gz.asc nginx.tar.gz \
   && rm -r "$GNUPGHOME" nginx.tar.gz.asc \
-  gpg --batch --verify naxsi.tar.gz.asc naxsi.tar.gz \
-  && rm -r "$GNUPGHOME" naxsi.tar.gz.asc \
   && mkdir -p /usr/src \
   && tar -zxC /usr/src -f nginx.tar.gz \
   && tar -zxC /usr/src -f naxsi.tar.gz \
   && rm nginx.tar.gz \
-  #&& rm naxsi.tar.gz \
+  && rm naxsi.tar.gz \
+  && rm naxsi.tar.asc \
   && cd /usr/src/nginx-$NGINX_VERSION \
   && ./configure $CONFIG --with-debug \
   && make -j$(getconf _NPROCESSORS_ONLN) \
